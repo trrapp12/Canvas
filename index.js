@@ -1,12 +1,21 @@
 (() => {
+  window.onload = window.onresize = () => {
+  
   const canvas = document.getElementById('allSeeingEye')
   let context = canvas.getContext('2d');
   let windowHeight = window.innerHeight;
   let windowWidth = window.innerWidth;
 
+  // color palette
+  let crimson = "#590202";
+  let red = "#BF0413";
+  let brightRed = "#F20505";
+  let white = "#F2F2F2";
+  let black = "#0D0D0D";
+
   // find window center 
-  let centerPointX = (windowWidth / 2)
-  let centerPointY = (windowHeight / 2)
+  let centerPointX = ((windowWidth - 200)/ 2)
+  let centerPointY = ((windowHeight - 200)/ 2)
 
   // construct triangle
   
@@ -67,7 +76,10 @@
   context.moveTo(x1, y1 + triangleHeight(sideLengthCurrent));
   context.lineTo(x2(x1, sideLengthCurrent), y2(y1, triangleHeight(sideLengthCurrent)));
   context.lineTo(x3(x1, sideLengthCurrent), y3(y1, triangleHeight(sideLengthCurrent)));
-  context.lineTo(centerPointX, centerPointY + triangleHeight(sideLengthCurrent));
-  context.fill();
-
+  context.lineTo(centerPointX + 1.5, (centerPointY + triangleHeight(sideLengthCurrent) + 1.5));
+  context.lineWidth = 10; 
+  context.strokeStyle = 'black';
+  context.stroke();
+  // context.closePath();
+  }
 })()
